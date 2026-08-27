@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="nl">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Knoppen overzicht</title>
+	<style>
+		:root {
+			--bg1: #102a43;
+			--bg2: #1f3c5b;
+			--panel: rgba(255, 255, 255, 0.10);
+			--panel-border: rgba(255, 255, 255, 0.18);
+			--text: #f7fafc;
+			--muted: rgba(247, 250, 252, 0.72);
+			--btn: #f59e0b;
+			--btn-hover: #fbbf24;
+			--disabled: rgba(255, 255, 255, 0.12);
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(circle at top left, rgba(245, 158, 11, 0.25), transparent 32%),
+				radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.22), transparent 28%),
+				linear-gradient(135deg, var(--bg1), var(--bg2));
+		}
+
+		.wrap {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 32px 20px 40px;
+		}
+
+		.panel {
+			background: var(--panel);
+			border: 1px solid var(--panel-border);
+			border-radius: 24px;
+			padding: 24px;
+			backdrop-filter: blur(10px);
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+		}
+
+		h1 {
+			margin: 0 0 8px;
+			font-size: clamp(1.6rem, 3vw, 2.4rem);
+			letter-spacing: 0.02em;
+		}
+
+		p {
+			margin: 0 0 18px;
+			color: var(--muted);
+			line-height: 1.5;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(78px, 1fr));
+			gap: 12px;
+		}
+
+		.nav-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 54px;
+			border: 0;
+			border-radius: 14px;
+			font-size: 1rem;
+			font-weight: 700;
+			color: #111827;
+			background: linear-gradient(180deg, var(--btn), #f97316);
+			text-decoration: none;
+			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+			cursor: pointer;
+			transition: transform 0.15s ease, filter 0.15s ease;
+		}
+
+		.nav-btn:hover:not(:disabled) {
+			transform: translateY(-2px);
+			filter: brightness(1.05);
+			background: linear-gradient(180deg, var(--btn-hover), #fb923c);
+		}
+
+		.nav-btn:disabled {
+			cursor: not-allowed;
+			color: rgba(255, 255, 255, 0.55);
+			background: var(--disabled);
+			border: 1px dashed rgba(255, 255, 255, 0.18);
+			box-shadow: none;
+		}
+	</style>
+</head>
+<body>
+	<main class="wrap">
+		<section class="panel">
+			<h1>Knoppen overzicht</h1>
+			<p>De knoppen volgen jouw mapping: 1 opent [398.html](398.html) en 33 opent [428.html](428.html).</p>
+			<div class="grid" id="buttons"></div>
+		</section>
+	</main>
+
+	<script>
+		const buttons = [
+			{ number: 1, file: '398.html' },
+			{ number: 2, file: '399.html' },
+			{ number: 3, file: '400.html' },
+			{ number: 4, file: '401.html' },
+			{ number: 5, file: '402.html' },
+			{ number: 6, file: '403.html' },
+			{ number: 7, file: '404.html' },
+			{ number: 8, file: '405.html' },
+			{ number: 9, file: '406.html' },
+			{ number: 10, file: '407.html' },
+			{ number: 11, file: '408.html' },
+			{ number: 12, file: '409.html' },
+			{ number: 13, file: '410.html' },
+			{ number: 14, file: '411.html' },
+			{ number: 16, file: '412.html' },
+			{ number: 17, file: '413.html' },
+			{ number: 18, file: '414.html' },
+			{ number: 19, file: '415.html' },
+			{ number: 20, file: '416.html' },
+			{ number: 21, file: '417.html' },
+			{ number: 22, file: '418.html' },
+			{ number: 23, file: '419.html' },
+			{ number: 24, file: '420.html' },
+			{ number: 25, file: '421.html' },
+			{ number: 26, file: '422.html' },
+			{ number: 27, file: '423.html' },
+			{ number: 28, file: '424.html' },
+			{ number: 29, file: '425.html' },
+			{ number: 30, file: '426.html' },
+			{ number: 31, file: '427.html' },
+			{ number: 33, file: '428.html' }
+		];
+
+		const container = document.getElementById('buttons');
+
+		for (const item of buttons) {
+			const button = document.createElement('button');
+			button.className = 'nav-btn';
+			button.textContent = item.number;
+			button.type = 'button';
+			button.addEventListener('click', () => {
+				window.location.href = item.file;
+			});
+			container.appendChild(button);
+		}
+	</script>
+</body>
+</html>
